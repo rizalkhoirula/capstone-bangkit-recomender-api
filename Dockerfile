@@ -1,12 +1,19 @@
-FROM python:3.8-slim
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    libpq-dev \
-    python3-dev \
-    python3-pip
-RUN pip install --upgrade pip
-COPY requirements.txt /tmp/requirements.txt
-RUN pip install -r /tmp/requirements.txt
-COPY . /app
+FROM python:3.10.10
+
 WORKDIR /app
-CMD ["python", "app.py"]
+
+RUN pip install --upgrade pip
+
+COPY requirements.txt requirements.txt
+
+RUN pip install -r requirements.txt
+
+COPY . .
+
+EXPOSE 8080
+
+ENV PYTHONUNBUFFERED=1
+
+# CMD ["python", "-u", "main.py"]
+
+CMD ["uvicorn", "--host", "0.0.0.0", "--port", "8080", "main:app"]
