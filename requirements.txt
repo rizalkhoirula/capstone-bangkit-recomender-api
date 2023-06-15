@@ -1,0 +1,11 @@
+tensorflow==2.9.0
+numpy==1.22.0
+pandas==1.4.2
+json==2.2.0
+requests==2.27.1
+os==3.7.13
+sqlalchemy==1.4.36
+google-cloud-storage==2.4.0
+google-oauth2-service-account==1.23.0
+fastapi==0.75.0
+fastapi-cors==1.0.0
